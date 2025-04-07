@@ -1,0 +1,50 @@
+// Write a function to find the occurrence of a character in a string.
+
+// using map
+
+function countCharacterOccurrence(str, ch) {
+    debugger;
+    const mp = new Map();
+    for (let i = 0; i < str.length; i++) {
+        if (!mp.has(str.charAt(i))) {
+            mp.set(str[i], 1);
+        } else {
+            mp.set(str[i], mp.get(str.charAt(i)) + 1);
+        }
+    }
+    return [...mp].find(([key, value]) => key === ch)[1];
+}
+
+// using reduce
+
+function countCharacterOccurrence(str, ch) {
+    let obj = str.split("").reduce((a, b) => {
+        a[b] = (a[b] || 0) + 1;
+        return a;
+    }, {});
+    return obj[ch];
+}
+
+// using for loop
+
+function countCharacterOccurrence(str, ch) {
+    count = 0;
+    for (let i = 0; i < str.length; i++) {
+        if (str.charAt(i) == ch) count++;
+    }
+    return count;
+}
+
+// using for loop and object 
+
+function countCharacterOccurrence(str, ch) {
+    let freqCounter = {};
+    for (let i of str)
+        freqCounter[i] = (freqCounter[i] || 0) + 1;
+    return freqCounter[ch];
+}
+
+var input = 'programming';
+console.log(countCharacterOccurrence(input, 'm'));
+
+
