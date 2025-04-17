@@ -10,6 +10,12 @@ function findLargestPrimeNumber(arr) {
     return maxPrime;
 }
 
+function findLargestPrimeNumber(arr) {
+    const tmp = arr.filter(x => isPrime(x));    
+    return (tmp && tmp.length != 0 )? Math.max(...tmp) : null;
+}
+
+
 function isPrime(num) {
     if (num <= 1) return false;
     if (num === 2) return true;
